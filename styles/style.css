@@ -4,6 +4,7 @@
   --color-soft-red: #fa5757;
   --color-grayish-blue: #9194a1;
   --color-very-dark-blue: #252b46;
+  --color-white: white;
   --color-off-white: #f7f7f7;
   --default-padding: 2rem;
   --default-radius: 0.4rem;
@@ -82,6 +83,13 @@ body {
   background-color: var(--color-off-white);
   color: var(--color-very-dark-blue);
 }
+.button--disabled {
+  background-color: var(--color-grayish-blue);
+  cursor: not-allowed;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
 
 .header {
   display: flex;
@@ -133,6 +141,10 @@ body {
     &:nth-of-type(1): select elements based on their position among siblings of the same element type.
    */
 }
+.section--one-column {
+  flex-direction: column;
+  gap: calc(var(--default-padding) / 2);
+}
 .section__content {
   flex: 1;
   display: flex;
@@ -146,6 +158,10 @@ body {
   font-size: 1.4rem;
   color: var(--color-grayish-blue);
 }
+.section--one-column .section__description {
+  max-width: 50rem;
+  text-align: center;
+}
 .section__buttons {
   display: flex;
   gap: var(--default-padding);
@@ -157,4 +173,53 @@ body {
 }
 .section__image {
   max-width: 100%;
+}
+
+.cards {
+  display: flex;
+  gap: var(--default-padding);
+  width: 100%;
+  margin-top: calc(var(--default-padding) * 2);
+  justify-content: space-between;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-white);
+  box-shadow: 0 0.4rem 0.8rem 0.2rem rgba(0, 0, 0, 0.1);
+  border-radius: var(--default-radius);
+  width: 25rem;
+  height: 26rem;
+  padding: var(--default-padding);
+  padding-top: calc(var(--default-padding) * 2);
+}
+.card__image {
+  width: 6rem;
+  max-width: 100%;
+  margin-bottom: calc(var(--default-padding) / 2);
+}
+.card__title {
+  font-size: 1.8rem;
+}
+.card__button {
+  position: relative;
+  align-self: stretch;
+  text-align: center;
+  margin-top: auto;
+}
+.card__button:before {
+  content: "";
+  position: absolute;
+  background: url("../images/bg-dots.svg") repeat-x;
+  /*
+    background-size: contain; tells the browser to scale the background image so the entire image fits inside the element, without cropping it.
+
+   */
+  background-size: contain;
+  height: 0.3rem;
+  top: calc(var(--default-padding) * -1.4);
+  left: calc(var(--default-padding) * -1);
+  right: calc(var(--default-padding) * -1);
 }/*# sourceMappingURL=style.css.map */
