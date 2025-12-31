@@ -1,11 +1,14 @@
 :root {
-  --color-very-dark-blue: #0f1424;
-  --color-dark-blue: #1c1f4a;
-  --color-desaturated-blue: #5646e9;
-  --color-pale-blue: #bdc1ff;
-  --color-white: #fff;
+  --color-soft-blue: #5368df;
+  --color-soft-red: #fa5757;
+  --color-grayish-blue: #9194a1;
+  --color-very-dark-blue: #252b46;
+  --color-off-white: #f7f7f7;
   --default-padding: 2rem;
-  --default-radius: 0.8rem;
+  --default-radius: 0.4rem;
+  --desktop-width: 900px;
+  --tablet-width: 600px;
+  --timing-animation: 0.2s;
 }
 
 /* CSS Reset */
@@ -25,6 +28,7 @@
 a {
   color: inherit;
   display: inline-block;
+  text-decoration: none;
 }
 
 button {
@@ -46,7 +50,7 @@ html {
 body {
   font-size: 1.6rem;
   font-family: "Rubik", sans-serif;
-  color: var(--color-white);
+  // color: var(--color-white);
 }
 
 /* End CSS Reset */
@@ -55,4 +59,115 @@ body {
   favicon is the icon displayed in the title. There are many websites which generate favicons from png/jpg... such as favicon.io (search for favicon).
   favicon is linked in the hrtml header section
  */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: var(--desktop-width);
+  margin: 0 auto;
+  padding: 0 var(--default-padding);
+  gap: calc(var(--default-padding) * 4);
+}
+
+.button {
+  background-color: var(--color-soft-blue);
+  border-radius: var(--default-radius);
+  padding: 1.2rem 2.4rem;
+  color: var(--color-off-white);
+  font-weight: 500;
+  font-size: 1.2rem;
+  /*
+    box-shadow: offset-x offset-y blur-radius spread-radius color;
+   */
+  box-shadow: 0 0.4rem 0.8rem 0.2rem rgba(0, 0, 0, 0.1);
+
+  &--secondary {
+    background-color: var(--color-off-white);
+    color: var(--color-very-dark-blue);
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;  // vertically
+  justify-content: space-between;
+  margin-top: var(--default-padding);
+}
+
+.logoContent {
+  display: flex;
+  align-items: center;  // vertically
+  gap: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 500;
  
+  &__logo { // same as .logoContent__logo {
+    width: 4rem;
+    max-width: 100%;
+  }
+}
+
+.links {
+  display: flex;
+  align-items: center;  // vertically
+  gap: var(--default-padding);
+
+  &__link {
+    color: var(--color-very-dark-blue);
+    /*
+      - ease-in-out is the timing function.
+        It controls how the animation progresses over time, not how long it lasts.
+        Slow → fast → slow
+      - linear → same speed all the time
+      - ease-in → slow start, fast end
+      - ease-out → fast start, slow end
+     */
+    transition: color var(--timing-animation) ease-in-out;
+
+    &:hover {
+      color: var(--color-soft-red);
+    }
+  }
+}
+
+.section {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--default-padding) * 2);
+
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--default-padding) / 2);
+  }
+
+  /*
+    &:nth-child(1): lets you select elements based on their position among siblings.
+
+    &:nth-of-type(1): select elements based on their position among siblings of the same element type.
+   */
+  &:nth-of-type(1) &__title {
+    font-size: 4.2rem;
+  }
+
+  &__description {
+    font-size: 1.4rem;
+    color: var(--color-grayish-blue);
+  }
+
+  &__buttons {
+    display: flex;
+    gap: var(--default-padding);
+    margin-top: var(--default-padding);
+  }
+
+  &__imageContent {
+    flex: 1;
+    display: flex;
+  }
+
+  &__image {
+    max-width: 100%;
+  }
+}
