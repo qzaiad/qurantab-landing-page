@@ -122,6 +122,7 @@ body {
   &__link {
     color: var(--color-very-dark-blue);
     /*
+      transition: property duration timing-function delay;
       - ease-in-out is the timing function.
         It controls how the animation progresses over time, not how long it lasts.
         Slow → fast → slow
@@ -243,3 +244,88 @@ body {
   }
   
 }
+
+/*
+  This style is called accordion
+  
+  Accordion style is a common UI pattern where content is stacked in sections, and each section can be expanded or collapsed to show or hide its content.
+
+  It’s called an “accordion” because it opens and closes like the musical instrument. */
+.faq {
+  max-width: 50rem;
+  margin-top: calc(var(--default-padding) * 2);
+  border-top: 1px solid var(--color-grayish-blue);
+  border-bottom: 1px solid var(--color-grayish-blue);
+
+  /*
+    The width of all li elements = the maximal width of all lis
+   */
+  &__row {
+    position: relative;
+    padding: var(--default-padding) 0;
+
+    &:not(:last-of-type) {
+      border-bottom: 1px solid var(--color-grayish-blue);
+    }
+  }
+
+  &__input {
+    display: none;
+
+    /*
+      sibling selector ~
+      Select any following sibling elements
+      - Both elements must share the same parent
+      - .faq__arrow must come after the &__input in the HTML
+      - It does not need to be immediately next
+     */
+    &:checked ~ .faq__arrow {
+      transform: rotate(180deg);
+    }
+
+    &:checked ~ .faq__answer {
+      opacity: 1;
+      /*
+        note that this is the max-height. the actual height
+        can be less
+       */
+      max-height: 30rem;
+      padding-top: var(--default-padding);
+    }
+  }
+
+  &__question {
+    display: block; // take the whole width
+    font-size: 1.6rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  &__arrow {
+    width: 1.2rem;
+    max-width: 100%;
+    position: absolute;
+    right: 0;
+    top: calc(var(--default-padding) + 0.6rem);
+    /*
+      transition: property duration timing-function delay;
+     */
+    transition: transform var(--timing-animation) ease-in-out;
+  }
+
+  &__answer {
+    font-size: 1.4rem;
+    font-weight: 400;
+    opacity: 0;
+    transition: all var(--timing-animation) ease-in-out;
+    /*
+      why not height? because height might change what that
+      browser width changes, e.g. very small
+     */
+    max-height: 0.1rem;
+    overflow: hidden; // hide everything after max-height
+    // margin-top: var(--default-padding);
+  }
+  
+}
+
