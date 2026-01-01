@@ -68,6 +68,10 @@ body {
   margin: 0 auto;
   padding: 0 var(--default-padding);
   gap: calc(var(--default-padding) * 4);
+
+  @media (max-width: 600px) {
+    gap: calc(var(--default-padding) * 2);
+  }
 }
 
 .button {
@@ -99,6 +103,10 @@ body {
   align-items: center;  // vertically
   justify-content: space-between;
   margin-top: var(--default-padding);
+
+  @media (max-width: 600px) {
+    font-size: 1.4rem;
+  }
 }
 
 .logoContent {
@@ -118,6 +126,10 @@ body {
   display: flex;
   align-items: center;  // vertically
   gap: var(--default-padding);
+
+  @media (max-width: 600px) {
+    gap: calc(var(--default-padding) / 2);
+  }
 
   &__link {
     color: var(--color-very-dark-blue);
@@ -142,6 +154,11 @@ body {
   display: flex;
   align-items: center;
   gap: calc(var(--default-padding) * 2);
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: calc(var(--default-padding) / 2);
+  }
 
   &--one-column {
     flex-direction: column;
@@ -181,9 +198,20 @@ body {
     margin-top: var(--default-padding);
   }
 
+  &__button:not(.card__button) {
+    @media (max-width: 600px) {
+      flex: 1;
+      text-align: center;
+    }
+  }
+
   &__imageContent {
     flex: 1;
     display: flex;
+
+    @media (max-width: 600px) {
+      order: -1;
+    }
   }
 
   &__image {
@@ -197,6 +225,11 @@ body {
   width: 100%;
   margin-top: calc(var(--default-padding) * 2);
   justify-content: space-between;
+
+  @media (max-width: 600px) {
+    // flex-direction: column;
+    flex-wrap: wrap;
+  }
 }
 
 .card {
@@ -210,6 +243,10 @@ body {
   height: 26rem;
   padding: var(--default-padding);
   padding-top: calc(var(--default-padding) * 2);
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 
   &__image {
     width: 6rem;
@@ -329,3 +366,35 @@ body {
   
 }
 
+.footer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  // justify-content: space-between; // this will change the start of before's background
+  justify-content: center;
+  color: white;
+  padding: var(--default-padding) 0;
+  font-size: 1.4rem;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: calc(var(--default-padding) / 2);
+  }
+
+  &__left {
+    margin-right: auto;
+
+    @media (max-width: 600px) {
+      margin-right: 0;
+    }
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100vw;
+    height: 100%;
+    background-color: var(--color-very-dark-blue);
+    z-index: -1;
+  }
+}
