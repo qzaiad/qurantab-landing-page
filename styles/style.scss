@@ -102,7 +102,14 @@ body {
   display: flex;
   align-items: center;  // vertically
   justify-content: space-between;
-  margin-top: var(--default-padding);
+  // margin-top: var(--default-padding);
+  
+  // sticky
+  top: 0rem;
+  position: sticky;
+  background: var(--color-white);
+  z-index: 1;
+  padding: 1rem;
 
   @media (max-width: 600px) {
     font-size: 1.4rem;
@@ -155,7 +162,7 @@ body {
   align-items: center;
   gap: calc(var(--default-padding) * 2);
   opacity: 0;
-  transform: translateY(10rem); // down
+  transform: translateX(30rem);
   transition: all var(--timing-animation) ease-in-out;
 
   @media (max-width: 600px) {
@@ -165,7 +172,7 @@ body {
 
   &.in-view {
     opacity: 1;
-    transform: translateY(0); // if visible -> down to up
+    transform: translateX(0);
 
     :not(.section--one-column) & {
       & > div:nth-of-type(1) {

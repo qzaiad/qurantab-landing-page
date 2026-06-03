@@ -1,4 +1,5 @@
-- disc (final product) is created by parcel
+- npm install --save-dev parcel
+- dist (final product) is created by parcel
 
 
 

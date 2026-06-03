@@ -15,11 +15,13 @@ const faqLabelClickEvent2 = (element) => {
 }
 
 const observeSections = (sectionElements) => {
-  const options = {threshold: 1.0};
+  const options = {threshold: .2};
   const callback = (entries) => { // entries = observed elements
     entries.forEach(entry => {
+      
+      console.log(entry.isIntersecting, entry.intersectionRatio);
+
       if(entry.isIntersecting){
-        console.log("In view");
         entry.target.classList.add('in-view'); // entry.target is the target element
       }else{
         entry.target.classList.remove('in-view');
