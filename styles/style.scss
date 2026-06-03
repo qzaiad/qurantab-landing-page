@@ -154,10 +154,28 @@ body {
   display: flex;
   align-items: center;
   gap: calc(var(--default-padding) * 2);
+  opacity: 0;
+  transform: translateY(10rem); // down
+  transition: all var(--timing-animation) ease-in-out;
 
   @media (max-width: 600px) {
     flex-direction: column;
     gap: calc(var(--default-padding) / 2);
+  }
+
+  &.in-view {
+    opacity: 1;
+    transform: translateY(0); // if visible -> down to up
+
+    :not(.section--one-column) & {
+      & > div:nth-of-type(1) {
+        transform: translateX(0rem);
+      }
+
+      & > div:nth-of-type(2) {
+        transform: translateX(0rem);
+      }
+    }
   }
 
   &--one-column {
