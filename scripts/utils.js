@@ -21,9 +21,9 @@ const observeSections = (sectionElements) => {
     entries.forEach(entry => {
       if(entry.isIntersecting){
           entry.target.classList.add('in-view'); // entry.target is the target element
-          observer.unobserve(entry.target); // otherwise
+          // observer.unobserve(entry.target); // otherwise
         }else{
-          // entry.target.classList.remove('in-view');
+          entry.target.classList.remove('in-view');
         }
       });
 
