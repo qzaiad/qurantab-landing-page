@@ -1,2 +1,0 @@
-var e;let t,o=document.querySelectorAll(".faq__question");o?.forEach(e=>{e.onkeydown=t=>{"Enter"==t.key&&e.click()}}),e=document.querySelectorAll(".section"),t=new IntersectionObserver(e=>{e.forEach(e=>{console.log(e.isIntersecting,e.intersectionRatio),e.isIntersecting?e.target.classList.add("in-view"):e.target.classList.remove("in-view")})},{threshold:.2}),e.forEach(e=>{t.observe(e)});
-//# sourceMappingURL=qurantab-landing-page.6809d23d.js.map
